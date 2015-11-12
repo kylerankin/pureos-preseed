@@ -1,0 +1,16 @@
+#!/bin/bash
+
+cat <<EOFMENU
+set root='hd0,msdos2'
+set isofile="/install_dvd1.iso"
+menuentry "Install PureOS" {
+ loopback loop (hd0,msdos2)\$isofile
+ linux (loop)/install.amd/vmlinuz iso-scan/ask_which_iso="[sda2] \$isofile (testing)" vga=788 auto=true file=/media/preseed.cfg DEBCONF_DEBUG=5 -- quiet
+ initrd /initrd.gz
+}
+menuentry "Install PureOS (Expert)" {
+ loopback loop (hd0,msdos2)\$isofile
+ linux (loop)/install.amd/vmlinuz iso-scan/ask_which_iso="[sda2] \$isofile (testing)" vga=788 -- quiet
+ initrd /initrd.gz
+}
+EOFMENU
