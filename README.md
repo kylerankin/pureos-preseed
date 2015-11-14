@@ -8,13 +8,13 @@ There are two phases to the preseed, each with its own preseed file:
 Phase 1: bootstrap.cfg
 ----------------------
 
-This file is designed to be fully automated when loaded from within a default Debian Stretch ISO. If this repository were hosted at the root of http://www.example.com, once the Stretch DVD were booted you would move the cursor down the Install option, hit Tab to edit the boot command line, and then to the left of the --- you would add:
+This file is designed to be fully automated when loaded from within a PureOS live install ISO (although it will probably work with the Debian alternative as well). If this repository were hosted at the root of http://www.example.com, once the DVD were booted you would move the cursor down the Install option, hit Tab to edit the boot command line, and then to the left of the --- you would add:
 
 `auto=true url=http://www.example.com/bootstrap.cfg hostname=somehost domain=somedomain`
 
-The bootstrap preseed will wipe out /dev/sda and use the bulk of the disk for a root partition that contains a temporary Debian install. The last 14Gb of the drive will be partitioned for a "rescuedisk" partition that will contain the rest of the preseed files as well as a copy of the install ISO used for the install. 
+The bootstrap preseed will wipe out /dev/sda and use the bulk of the disk for a root partition that contains a temporary Debian install. The last 2Gb of the drive will be partitioned for a "rescuedisk" partition that will contain the rest of the preseed files as well as a copy of the install ISO used for the install. 
 
-The preseed script will update Grub with a special PureOS Install menu option that will boot from this rescue disk and kick off the Phase 2 install. After the install finishes, the system will power down and if you want you can add additional DVD ISO files to the rescuedisk partition to reduce the Phase 2 install's reliance on a network connection.
+The preseed script will update Grub with a special PureOS Install menu option that will boot from this rescue disk and kick off the Phase 2 install. After the install finishes, the system will power down.
 
 Phase 2: preseed.cfg
 --------------------
