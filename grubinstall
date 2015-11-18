@@ -6,12 +6,12 @@ set isofile="/install_dvd1.iso"
 menuentry "Install PureOS-2.0" {
  loopback loop (hd0,msdos2)\$isofile
  linux (loop)/install/gtk/vmlinuz video=vesa:ywrap,mtrr vga=788 file=/media/preseed.cfg DEBCONF_DEBUG=5 -- quiet
- initrd /initrd.gz
+ initrd (loop)/install/pureos/initrd.gz
 }
 menuentry "Install PureOS-2.0 (Expert)" {
  loopback loop (hd0,msdos2)\$isofile
  linux (loop)/install/gtk/vmlinuz video=vesa:ywrap,mtrr vga=788 -- quiet
- initrd /initrd.gz
+ initrd (loop)/install/pureos/initrd.gz
 }
 menuentry "Live Rescue Disk" {
  loopback loop (hd0,msdos2)\$isofile
