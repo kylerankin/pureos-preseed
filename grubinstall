@@ -5,7 +5,7 @@ set root='hd0,msdos2'
 set isofile="/install_dvd1.iso"
 menuentry "Install PureOS-2.0" {
  loopback loop (hd0,msdos2)\$isofile
- linux (loop)/install/gtk/vmlinuz video=vesa:ywrap,mtrr vga=788 file=/media/preseed.cfg DEBCONF_DEBUG=5 -- quiet
+ linux (loop)/install/gtk/vmlinuz video=vesa:ywrap,mtrr vga=788 file=/media/preseed.cfg -- quiet
  initrd (loop)/install/pureos/initrd.gz
 }
 menuentry "Install PureOS-2.0 (Expert)" {
